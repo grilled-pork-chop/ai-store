@@ -1,0 +1,282 @@
+@reference "./globals.css";
+
+
+/* =============================================
+  Markdown Rendering Theme — ShadCN Compatible
+  ============================================= */
+
+.markdown-body {
+  @apply text-sm leading-relaxed;
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  word-break: break-word;
+}
+
+/* --------------------
+  Headings
+-------------------- */
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  @apply font-semibold text-foreground scroll-mt-24;
+  line-height: 1.25;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.markdown-body h1 { @apply text-3xl border-b border-border pb-2; }
+.markdown-body h2 { @apply text-2xl border-b border-border pb-1; }
+.markdown-body h3 { @apply text-xl; }
+.markdown-body h4 { @apply text-lg; }
+.markdown-body h5 { @apply text-base; }
+.markdown-body h6 { @apply text-sm uppercase tracking-wide; }
+
+/* --------------------
+  Paragraphs & text
+-------------------- */
+.markdown-body p {
+  margin: 0.75rem 0;
+  color: hsl(var(--muted-foreground));
+}
+
+.markdown-body strong {
+  @apply font-semibold text-foreground;
+}
+
+.markdown-body em {
+  font-style: italic;
+}
+
+.markdown-body del {
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+.markdown-body hr {
+  @apply my-6 border-border;
+}
+
+/* --------------------
+  Links
+-------------------- */
+.markdown-body a {
+  color: hsl(var(--primary));
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s ease;
+}
+.markdown-body a:hover {
+  color: hsl(var(--primary-foreground));
+}
+
+/* --------------------
+  Lists
+-------------------- */
+.markdown-body ul,
+.markdown-body ol {
+  @apply my-3 pl-6;
+}
+.markdown-body li {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.markdown-body li::marker {
+  color: hsl(var(--muted-foreground));
+}
+.markdown-body ul ul,
+.markdown-body ol ol,
+.markdown-body ul ol,
+.markdown-body ol ul {
+  @apply mt-1 mb-1 pl-5;
+}
+
+/* Task lists */
+.markdown-body input[type="checkbox"] {
+  accent-color: hsl(var(--primary));
+  margin-right: 0.4rem;
+}
+
+/* --------------------
+  Blockquotes
+-------------------- */
+.markdown-body blockquote {
+  @apply border-l-4 pl-3 italic text-muted-foreground;
+  background-color: hsl(var(--muted));
+  border-color: hsl(var(--muted-foreground));
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+}
+
+/* --------------------
+  Code & Preformatted blocks
+-------------------- */
+.markdown-body code {
+  @apply bg-muted px-1 py-0.5 rounded font-mono text-[13px] text-foreground;
+}
+
+.markdown-body pre {
+  @apply bg-muted text-foreground rounded-lg p-4 overflow-x-auto font-mono text-[13px];
+  border: 1px solid hsl(var(--border));
+  line-height: 1.45;
+}
+
+.markdown-body pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+}
+
+/* Syntax highlight colors (light/dark balanced) */
+.markdown-body pre code .hljs-keyword,
+.markdown-body pre code .hljs-selector-tag,
+.markdown-body pre code .hljs-literal,
+.markdown-body pre code .hljs-section {
+  color: hsl(var(--primary));
+}
+.markdown-body pre code .hljs-string,
+.markdown-body pre code .hljs-attr,
+.markdown-body pre code .hljs-symbol {
+  color: hsl(var(--success, 145 50% 50%));
+}
+.markdown-body pre code .hljs-comment {
+  color: hsl(var(--muted-foreground));
+  font-style: italic;
+}
+
+/* --------------------
+  Tables
+-------------------- */
+.markdown-body table {
+  @apply w-full border-collapse border border-border my-4 text-sm;
+}
+.markdown-body th {
+  @apply bg-muted text-foreground border border-border px-3 py-1.5 font-semibold;
+}
+.markdown-body td {
+  @apply border border-border px-3 py-1.5 text-muted-foreground;
+}
+.markdown-body tr:nth-child(even) {
+  background-color: hsl(var(--muted) / 0.3);
+}
+
+/* --------------------
+  Images & media
+-------------------- */
+.markdown-body img {
+  @apply rounded-md border border-border my-4 max-w-full;
+}
+.markdown-body video {
+  @apply rounded-md my-4 max-w-full;
+}
+
+/* --------------------
+  Inline elements
+-------------------- */
+.markdown-body mark {
+  background-color: hsl(var(--warning) / 0.2);
+  color: hsl(var(--foreground));
+  padding: 0 0.15em;
+  border-radius: 0.2em;
+}
+.markdown-body small {
+  @apply text-xs text-muted-foreground;
+}
+.markdown-body sup {
+  vertical-align: super;
+  font-size: smaller;
+}
+
+/* --------------------
+  Horizontal rules
+-------------------- */
+.markdown-body hr {
+  border: 0;
+  height: 1px;
+  background-color: hsl(var(--border));
+  margin: 1.5rem 0;
+}
+
+/* --------------------
+  Alerts / Admonitions
+-------------------- */
+.markdown-body .note,
+.markdown-body .tip,
+.markdown-body .warning {
+  @apply border-l-4 p-3 rounded-lg my-4;
+}
+.markdown-body .note {
+  @apply border-sky-500 bg-sky-100 text-sky-900 dark:border-sky-400 dark:bg-sky-950 dark:text-sky-50;
+}
+.markdown-body .tip {
+  @apply border-emerald-500 bg-emerald-100 text-emerald-900 dark:border-emerald-400 dark:bg-emerald-950 dark:text-emerald-50;
+}
+.markdown-body .warning {
+  @apply border-amber-500 bg-amber-100 text-amber-900 dark:border-amber-400 dark:bg-amber-950 dark:text-amber-50;
+}
+
+/* --------------------
+  Details / Summary
+-------------------- */
+.markdown-body details {
+  @apply my-3 border border-border rounded-lg;
+}
+.markdown-body summary {
+  @apply cursor-pointer p-2 font-medium text-foreground;
+}
+.markdown-body details[open] > summary {
+  @apply border-b border-border;
+}
+.markdown-body details > *:not(summary) {
+  @apply p-3;
+}
+
+/* --------------------
+  Code diffs (added/removed lines)
+-------------------- */
+.markdown-body .hljs-addition {
+  background-color: hsl(var(--success) / 0.15);
+  display: block;
+}
+.markdown-body .hljs-deletion {
+  background-color: hsl(var(--destructive) / 0.15);
+  display: block;
+}
+
+/* --------------------
+  Misc
+-------------------- */
+.markdown-body kbd {
+  @apply border border-border rounded-md bg-muted px-1.5 py-0.5 text-xs font-mono text-foreground;
+}
+.markdown-body abbr[title] {
+  text-decoration: underline dotted;
+  cursor: help;
+}
+
+.markdown-body figure {
+  @apply my-4;
+}
+.markdown-body figcaption {
+  @apply text-center text-xs text-muted-foreground mt-1;
+}
+
+/* --------------------
+  Scroll behavior
+-------------------- */
+.markdown-body {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground)) transparent;
+}
+.markdown-body::-webkit-scrollbar {
+  width: 8px;
+}
+.markdown-body::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.4);
+  border-radius: 8px;
+}
+.markdown-body::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--muted-foreground) / 0.6);
+}

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "1",
+    "name": "Llama2 Text Generator",
+    "author": "Meta AI",
+    "description": "Open-weight language model optimized for text generation tasks.",
+    "detailedDescription": "# 🦙 LLaMA 2 — Advanced Markdown Showcase\n\nLLaMA 2 is a **next-generation** large language model built for:  \n✅ *Text Generation*  \n✅ *Chat Applications*  \n✅ *Fine-Tuning & Research*\n\n---\n\n## 📌 Table of Contents\n- [1. Overview](#1-overview)\n- [2. Features](#2-features)\n- [3. Code Examples](#3-code-examples)\n- [4. Model Architecture](#4-model-architecture)\n- [5. Training Details](#5-training-details)\n- [6. Advanced Markdown Tricks](#6-advanced-markdown-tricks)\n\n---\n\n## 1. Overview\n\n> \"LLaMA 2 combines efficiency, accuracy, and open availability.\" — *Meta AI Paper*\n\n### 🔹 Quick Stats\n\n| Property | Value |\n|----------|----------------|\n| Parameters | 7B / 13B / 70B |\n| Context Length | 4096 tokens |\n| License | Meta LLaMA 2 Community License |\n| Framework | PyTorch |\n\n---\n\n## 2. ✅ Features\n\n- **Open-Weight** — can be downloaded & self-hosted  \n- **Optimized Attention** using FlashAttention  \n- Supports **LoRA & QLoRA fine-tuning**  \n- Works with **vLLM, Hugging Face, OpenAI API format**  \n\n**Task List Example**  \n- [x] Training on public datasets  \n- [x] Chat fine-tuning  \n- [ ] Multi-modal image-text capabilities (coming soon)\n\n---\n\n## 3. 💻 Code Examples\n\n### 🐍 Python\n\n```python\nfrom transformers import AutoModelForCausalLM, AutoTokenizer\n\ntok = AutoTokenizer.from_pretrained(\"meta-llama/Llama-2-7b-chat-hf\")\nmodel = AutoModelForCausalLM.from_pretrained(\"meta-llama/Llama-2-7b-chat-hf\")\n\nprompt = \"Explain quantum computing in simple terms.\"\ninputs = tok(prompt, return_tensors='pt')\noutputs = model.generate(**inputs, max_new_tokens=200)\nprint(tok.decode(outputs[0], skip_special_tokens=True))\n```\n\n### 🖥️ Bash\n\n```bash\npip install transformers accelerate bitsandbytes\nhuggingface-cli login\n```\n\n---\n\n## 4. 🧠 Model Architecture\n\n```mermaid\ngraph TD;\n    A[Input Tokens] --> B[Embedding Layer]\n    B --> C[Transformer Blocks × 32]\n    C --> D[Self-Attention + MLP]\n    D --> E[Output Layer]\n```\n\n---\n\n## 5. 📊 Training Details\n\n| Dataset | Tokens | Source |\n|---------|--------|--------|\n| Common Crawl | 2T | Web |\n| GitHub | 500B | Code |\n| BookCorpus | 100B | Books |\n\n**Footnote:** Performance varies depending on GPU type.[^1]\n\n[^1]: Evaluated on 8× A100 80GB.\n\n---\n\n## 6. 🧪 Advanced Markdown Tricks\n\n<details><summary>📁 Click to expand configuration example</summary>\n\n```json\n{\n  \"temperature\": 0.7,\n  \"top_p\": 0.9,\n  \"max_tokens\": 512\n}\n```\n</details>\n\n---\n\n## 📷 Images & HTML Embed\n\nMarkdown:  \n![Llama in Andes](https://upload.wikimedia.org/wikipedia/commons/6/6e/Llama_in_the_Andes.jpg)\n\nHTML:  \n<img src=\"https://placehold.co/600x200\" alt=\"Placeholder\" width=\"100%\"/>\n\n---\n\n> **Tip:** Mix HTML + Markdown for more control in your renderer.\n\n---\n\n*Maintained by Meta AI • Inspired by Hugging Face 🤗*\n",
+    "projectType": "Model",
+    "license": "Apache 2.0",
+    "downloads": 125000,
+    "favorites": 8900,
+    "lastUpdated": "2025-09-14T10:00:00Z",
+    "framework": "PyTorch",
+    "tags": ["llm", "text", "transformer"],
+    "uploadedFiles": [
+      {
+        "name": "llama2-70b.safetensors",
+        "description": "Main model weights file",
+        "size": 35800000000,
+        "type": "model"
+      },
+      {
+        "name": "tokenizer.json",
+        "description": "SentencePiece tokenizer",
+        "size": 4800000,
+        "type": "tokenizer"
+      }
+    ],
+    "technicalSpecs": {
+      "architecture": "Decoder-only Transformer",
+      "parameters": "70B",
+      "baseModel": "LLaMA 2",
+      "backend": "vLLM",
+      "runtime": "CUDA 12.2",
+      "task": "Text Generation",
+      "format": "safetensors"
+    },
+    "links": {
+      "repository": "https://github.com/meta-llama/llama",
+      "paper": "https://arxiv.org/abs/2307.09288",
+      "demo": "https://huggingface.co/meta-llama"
+    },
+    "metrics": {
+      "downloadsHistory": [120, 180, 160, 220, 260, 240, 300, 360, 340]
+    }
+  },
+  {
+    "id": "2",
+    "name": "VisionDiffusion",
+    "author": "Grilled Pork Chop",
+    "description": "Diffusion-based image generation demo app.",
+    "detailedDescription": "# 🎨 VisionDiffusion — Image Generation Web App\n\nVisionDiffusion is a **React-based web app** that lets users generate images using **diffusion models** (Stable Diffusion-like).\n\n---\n\n## 🚀 Features\n\n| Feature | Description |\n|---------|-------------|\n| 🖼️ Image Generation | Diffusion-based generation from text prompts |\n| 📁 Image History | Stores previous generations in browser/local storage |\n| 🎛️ Controls | CFG scale, steps, sampler type, resolution |\n| ⚡ Backend | Connects to FastAPI / Flask diffusion server |\n\n---\n\n## 📁 Folder Structure\n```bash\nvisiondiffusion/\n├── src/\n│   ├── components/\n│   ├── pages/\n│   ├── api/\n│   └── App.tsx\n├── public/\n└── package.json\n```\n\n---\n\n## 🖥️ How It Works\n\n```mermaid\ngraph TD;\n    A[User enters prompt] --> B[Send request to API];\n    B --> C[Diffusion backend generates image];\n    C --> D[Base64/URL returned to frontend];\n    D --> E[React displays final result];\n```\n\n---\n\n## 📦 Example API Request\n\n```ts\nconst response = await fetch(\"/api/generate\", {\n  method: \"POST\",\n  headers: { \"Content-Type\": \"application/json\" },\n  body: JSON.stringify({ prompt: \"a fox in the mountains\", steps: 30 })\n});\nconst data = await response.json();\n```\n\n---\n\n## 🎛️ UI Preview (Mockup)\n\n```\n+--------------------------------------------------+\n| Prompt: [a cyberpunk cat with neon lights      ] |\n| Steps: [30]   CFG Scale: [7.5]   Generate [🚀]    |\n+--------------------------------------------------+\n|                  Generated Image                 |\n|            [     ███████████████     ]           |\n+--------------------------------------------------+\n```\n\n---\n\n## 🔮 Future Roadmap\n- [ ] GPU-powered backend with CUDA / ROCm\n- [ ] Inpainting & Image-to-Image\n- [ ] Multi-user gallery & sharing\n\n---\n\n*Built with ❤️ by Grilled Pork Chop.*",
+    "projectType": "App",
+    "license": "MIT",
+    "downloads": 74000,
+    "favorites": 3120,
+    "lastUpdated": "2025-10-01T15:30:00Z",
+    "framework": "React",
+    "tags": ["image", "diffusion", "frontend"],
+    "uploadedFiles": [
+      {
+        "name": "frontend.zip",
+        "description": "React + Tailwind frontend source",
+        "size": 2400000,
+        "type": "code"
+      },
+      {
+        "name": "api-server.py",
+        "description": "FastAPI backend script",
+        "size": 64000,
+        "type": "backend"
+      }
+    ],
+    "technicalSpecs": {
+      "frontend": "React + TailwindCSS",
+      "backend": "FastAPI",
+      "runtime": "Python 3.11",
+      "task": "Image Generation",
+      "format": "Docker Image"
+    },
+    "links": {
+      "repository": "https://github.com/grilledpork/visiondiffusion",
+      "demo": "https://visiondiffusion.app",
+      "docs": "https://visiondiffusion.app/docs"
+    },
+    "metrics": {
+      "downloadsHistory": [40, 80, 120, 160, 240, 260, 340, 400]
+    }
+  },
+  {
+    "id": "3",
+    "name": "OpenDataset: Birds",
+    "author": "AI Hub Team",
+    "description": "A high-quality dataset of bird species images and labels.",
+    "detailedDescription": "# 🐦 OpenDataset: Birds — Image Classification Dataset\n\nThis dataset contains **high-resolution images of bird species** with labels, metadata, and train/validation/test splits.\n\n---\n\n## 📊 Dataset Overview\n\n| Property | Value |\n|----------|-------|\n| Total Images | 45,000 |\n| Species | 520 bird species |\n| Format | JPG + JSON labels |\n| License | CC BY 4.0 |\n| Annotation | Manual & Semi-Automatic |\n\n---\n\n## 📁 Directory Structure\n\n```bash\nopendataset-birds/\n├── images/\n│   ├── train/\n│   ├── val/\n│   └── test/\n├── metadata/\n│   └── annotations.json\n└── README.md\n```\n\n---\n\n## 🧪 Sample Annotation\n\n```json\n{\n  \"image\": \"train/00123.jpg\",\n  \"species\": \"European Robin\",\n  \"location\": \"France\",\n  \"bbox\": [120, 45, 260, 300]\n}\n```\n\n---\n\n## 🐍 Usage in PyTorch\n\n```python\nfrom torchvision import datasets, transforms\n\ndataset = datasets.ImageFolder(\n    root=\"opendataset-birds/images/train\",\n    transform=transforms.Compose([\n        transforms.Resize((224,224)),\n        transforms.ToTensor()\n    ])\n)\n```\n\n---\n\n## 🔬 Example Classes\n- Bald Eagle *(Haliaeetus leucocephalus)*\n- European Robin *(Erithacus rubecula)*\n- Kingfisher *(Alcedo atthis)*\n\n---\n\n## 📈 Potential Use Cases\n✅ Image classification / fine-tuning CNNs  \n✅ Bird call + image multi-modal research  \n✅ Ecological monitoring & biodiversity studies\n\n---\n\n*Maintained by AI Hub Team — Contributions welcome.*",
+    "projectType": "Dataset",
+    "license": "CC BY 4.0",
+    "downloads": 32000,
+    "favorites": 890,
+    "lastUpdated": "2025-09-28T12:00:00Z",
+    "framework": "N/A",
+    "tags": ["dataset", "classification", "birds"],
+    "uploadedFiles": [
+      {
+        "name": "birds-train.zip",
+        "description": "Training images dataset",
+        "size": 1200000000,
+        "type": "dataset"
+      },
+      {
+        "name": "annotations.json",
+        "description": "Bounding boxes and labels",
+        "size": 3400000,
+        "type": "labels"
+      }
+    ],
+    "technicalSpecs": {
+      "format": "JPEG + JSON labels",
+      "sizeGB": "25",
+      "numSamples": "45000",
+      "source": "Custom collection",
+      "labeling": "Manually annotated"
+    },
+    "links": {
+      "repository": "https://github.com/aihub/opendataset-birds",
+      "docs": "https://aihub.com/docs/birds",
+      "demo": "https://aihub.com/datasets/birds"
+    },
+    "metrics": {
+      "downloadsHistory": [60, 90, 140, 210, 260, 300, 320, 360]
+    }
+  },
+  {
+    "id": "4",
+    "name": "AG-Weather MCP Tool",
+    "author": "AI Hub Team",
+    "description": "An MCP tool that provides real-time weather data to agents via AG-UI / MCP protocol.",
+    "projectType": "MCP Tool",
+    "license": "MIT",
+    "downloads": 18500,
+    "favorites": 1200,
+    "lastUpdated": "2025-10-20T11:45:00Z",
+    "framework": "Python (FastAPI + MCP SDK)",
+    "tags": ["mcp", "agent", "tool", "weather"],
+
+    "detailedDescription": "# 🌦 AG-Weather MCP Tool\n\nThe **AG-Weather MCP Tool** allows AI agents (using MCP / AG-UI protocol) to fetch *real-time, location-based weather data*, including temperature, humidity, forecast, and severe alerts.\n\n---\n\n## ✅ Key Features\n| Feature | Description |\n|---------|-------------|\n| 🌍 City + GPS support | Query weather by city or lat/lon |\n| 📡 MCP-compatible | Works with AG-UI, PydanticAI, LangGraph |\n| ⚡ Streaming | Streams events via AG-UI protocol |\n| 🧩 Tool-call ready | Implements `tool_call_start`, `tool_call_end` |\n| 📁 Configurable | Supports API keys, units, location formats |\n\n---\n\n## 📦 Example Usage (PydanticAI)\n```python\nfrom pydantic_ai import Agent\nfrom mcp_tools.weather import get_weather\n\nagent = Agent(\"openai:gpt-4o-mini\")\nagent.tools.register(get_weather)\n\nresponse = agent.run(\"What's the weather in Tokyo?\")\nprint(response)\n```\n\n---\n\n## 🛠 Tool Definition (MCP)\n```json\n{\n  \"name\": \"get_weather\",\n  \"description\": \"Get current weather by city name.\",\n  \"parameters\": {\n    \"type\": \"object\",\n    \"properties\": {\n      \"city\": { \"type\": \"string\", \"description\": \"City to check weather\" }\n    },\n    \"required\": [\"city\"]\n  }\n}\n```\n\n---\n\n## 🔄 AG-UI Event Flow\n```mermaid\nsequenceDiagram\n    participant Agent\n    participant MCP\n    Agent->>MCP: TOOL_CALL_START (get_weather)\n    MCP-->>Agent: TOOL_CALL_ARGS {\"city\": \"Paris\"}\n    MCP-->>Agent: TOOL_CALL_RESULT {\"temp\": 18, \"condition\": \"Cloudy\"}\n```\n\n---\n\n*Maintained by AI Hub • Works with AG-UI v0.3+ and MCP draft spec.*",
+
+    "uploadedFiles": [
+      {
+        "name": "weather_tool.py",
+        "description": "Core MCP tool implementation.",
+        "size": 24000,
+        "type": "code"
+      },
+      {
+        "name": "tool.schema.json",
+        "description": "JSON schema for get_weather tool definition.",
+        "size": 2200,
+        "type": "schema"
+      }
+    ],
+
+    "technicalSpecs": {
+      "language": "Python 3.11",
+      "protocol": "MCP (Model Context Protocol) + AG-UI",
+      "toolName": "get_weather",
+      "runtime": "uvicorn + FastAPI",
+      "api": "OpenWeatherMap",
+      "format": "JSON tool schema"
+    },
+
+    "links": {
+      "repository": "https://github.com/aihub/mcp-weather",
+      "docs": "https://aihub.com/mcp/weather/docs",
+      "demo": "https://aihub.com/mcp/weather/demo"
+    },
+
+    "metrics": {
+      "downloadsHistory": [10, 24, 38, 52, 80, 120, 160, 210]
+    }
+  }
+]
